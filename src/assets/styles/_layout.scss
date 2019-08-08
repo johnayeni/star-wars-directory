@@ -1,0 +1,12 @@
+.container {
+  @include flex(column, wrap, flex-start, stretch);
+  width: 100vw;
+  min-height: 100vh;
+}
+.cards-container {
+  background-color: $white;
+  min-height: 100%;
+  flex: 1;
+  padding: 20px;
+  @include flex(row, wrap, center, flex-start);
+}
