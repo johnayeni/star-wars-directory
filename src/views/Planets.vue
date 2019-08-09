@@ -1,9 +1,16 @@
 <template>
-  <p>Planets</p>
+  <div class="cards-container">
+    <PlanetCard></PlanetCard>
+  </div>
 </template>
 
 <script>
-export default {
+import PlanetCard from '@/components/PlanetCard';
 
+export default {
+  name: 'Planets',
+  components: {
+    PlanetCard,
+  },
 };
 </script>

@@ -1,9 +1,11 @@
 <template>
-  <p>Starships</p>
+  <div class="cards-container">
+
+  </div>
 </template>
 
 <script>
 export default {
-
+  name: 'Staships',
 };
 </script>

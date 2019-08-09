@@ -5,10 +5,14 @@ export const extractPageNumberFromUrl = (url) => {
 };
 
 export const handlePayload = (payload) => {
-  const { next: nextPageUrl, previousPageUrl, results: list } = payload;
+  const {
+    next: nextPageUrl, previousPageUrl, results: list, count,
+  } = payload;
   const next = extractPageNumberFromUrl(nextPageUrl);
   const previous = extractPageNumberFromUrl(previousPageUrl);
-  return { next, previous, list };
+  return {
+    next, previous, list, count,
+  };
 };
 
 export const buildUrl = (base, path, page = 1) => `${base}/${path}?page=${page}`;

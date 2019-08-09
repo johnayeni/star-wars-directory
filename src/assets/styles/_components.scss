@@ -57,7 +57,7 @@
 .character-card {
   background-color: lighten($gray, 5);
   width: 300px;
-  height: 450px;
+  height: 350px;
   border-radius: 10px;
   @include flex(column, nowrap, flex-start, stretch);
   transition: 200ms ease all;
@@ -90,6 +90,37 @@
         filter: grayscale(0%);
         bottom: -30px;
       }
+    }
+  }
+}
+
+.planet-card {
+  @include flex(column, nowrap, flex-start, stretch);
+  box-shadow: 0px 16px 16px 0 rgba(49, 64, 70, 0.1);
+  width: 250px;
+  background-color: $black;
+  background-image: url('../img/hero-banner.gif');
+  color: $white;
+  height: 250px;
+  border-radius: 20px;
+  position: relative;
+  padding: 30px;
+  text-align: center;
+  transition: 200ms ease all;
+  img {
+    width: 180px;
+    margin: auto;
+    display: block;
+    filter: grayscale(50%);
+    transition: 200ms ease all;
+  }
+  &:hover {
+    background-color: $yellow;
+    background-image: none;
+    color: $black;
+    img {
+      filter: grayscale(0%);
+      transform: scale3d(1.2, 1.2, 1.2);
     }
   }
 }

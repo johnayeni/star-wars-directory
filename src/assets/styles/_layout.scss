@@ -8,5 +8,6 @@
   min-height: 100%;
   flex: 1;
   padding: 20px;
+  padding-top: 50px;
   @include flex(row, wrap, center, flex-start);
 }
