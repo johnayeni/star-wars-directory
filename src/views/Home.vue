@@ -7,7 +7,7 @@
           <h2>Directory</h2>
         </div>
         <div class="flex-h-center">
-          <p>Find your favourite Characters, Starshps and Planets.</p>
+          <h4>Catalog of your favourite Characters, Starshps and Planets.</h4>
         </div>
         <SearchBar></SearchBar>
       </div>

@@ -1,35 +1,42 @@
+import Vue from 'vue';
 import { fetchData } from '@/api';
 
 const actions = {
   async getCharacters({ commit }, page = 1) {
-    commit('setFetchingCharacters', true);
     try {
+      commit('setFetchingCharacters', true);
       const payload = await fetchData('people', page);
       commit('setCharacters', payload);
     } catch (error) {
-      console.log(error.message);
+      Vue.$toast.error(error.message, {
+        position: 'top',
+      });
     } finally {
       commit('setFetchingCharacters', false);
     }
   },
   async getPlanets({ commit }, page = 1) {
-    commit('setFetchingStarships', true);
     try {
+      commit('setFetchingStarships', true);
       const payload = await fetchData('planets', page);
       commit('setPlanets', payload);
     } catch (error) {
-      console.log(error.message);
+      Vue.$toast.error(error.message, {
+        position: 'top',
+      });
     } finally {
       commit('setFetchingStarships', false);
     }
   },
   async getStarships({ commit }, page = 1) {
-    commit('setFetchingPlanets', true);
     try {
+      commit('setFetchingPlanets', true);
       const payload = await fetchData('starships', page);
       commit('setStarships', payload);
     } catch (error) {
-      console.log(error.message);
+      Vue.$toast.error(error.message, {
+        position: 'top',
+      });
     } finally {
       commit('setFetchingPlanets', false);
     }
