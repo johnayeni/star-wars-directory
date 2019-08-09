@@ -1,7 +1,6 @@
 .hero-banner {
   background-image: url('../img/hero-banner.gif');
   min-height: 30vh;
-  width: 100vw;
   padding: 10px;
   color: $yellow;
   background-color: $black;
@@ -35,7 +34,7 @@
     color: $white;
     img {
       width: 50px;
-      transition: 300ms ease-in-out all;
+      transition: 1s ease-in-out all;
       filter: grayscale(100%);
     }
     h3 {
@@ -44,7 +43,7 @@
     &.active {
       color: $yellow;
       img {
-        transform: scale(1.5) rotate(-1deg);
+        transform: scale(1.2);
         filter: brightness(100%);
       }
       h3 {
@@ -55,64 +54,63 @@
 }
 
 .character-card {
-  background-color: lighten($gray, 5);
+  background-color: $gray;
+  color: $charcoal;
   width: 300px;
   height: 350px;
   border-radius: 10px;
-  @include flex(column, nowrap, flex-start, stretch);
+  margin: 20px;
+  @include flex(column, wrap, center, center);
   transition: 200ms ease all;
-  &-head {
+  text-align: center;
+  * {
+    margin: 0;
     padding: 0;
-    img {
-      width: 200px;
-      margin: auto;
-      display: block;
-      border-radius: 50%;
-      position: relative;
-      z-index: 1000;
-      bottom: -50px;
-      filter: grayscale(100%);
-      transition: 200ms ease all;
-    }
   }
-  &-body {
-    background-color: $yellow;
-    text-align: center;
-    border-radius: 30px 30px 10px 10px;
-    padding: 20px;
-    padding-top: 40px;
-    height: 100%;
+  img {
+    width: 200px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    filter: grayscale(70%);
+    transition: 200ms ease all;
   }
   &:hover {
-    box-shadow: 0px 16px 16px 0 rgba(49, 64, 70, 0.1);
-    .character-card-head {
-      img {
-        filter: grayscale(0%);
-        bottom: -30px;
-      }
+    background-color: $yellow;
+    color: $black;
+    img {
+      filter: grayscale(0%);
+      transform: scale(1.1);
     }
   }
 }
 
+.starship-card,
 .planet-card {
-  @include flex(column, nowrap, flex-start, stretch);
+  @include flex(column, nowrap, center, center);
   box-shadow: 0px 16px 16px 0 rgba(49, 64, 70, 0.1);
   width: 250px;
   background-color: $black;
   background-image: url('../img/hero-banner.gif');
   color: $white;
-  height: 250px;
+  height: 400px;
   border-radius: 20px;
   position: relative;
   padding: 30px;
   text-align: center;
+  margin: 10px;
   transition: 200ms ease all;
+  * {
+    margin: 0;
+    padding: 0;
+  }
   img {
-    width: 180px;
-    margin: auto;
-    display: block;
+    width: 150px;
+    margin-bottom: 20px;
     filter: grayscale(50%);
     transition: 200ms ease all;
+  }
+  p {
+    font-size: 0.8rem;
   }
   &:hover {
     background-color: $yellow;
@@ -121,6 +119,69 @@
     img {
       filter: grayscale(0%);
       transform: scale3d(1.2, 1.2, 1.2);
+    }
+  }
+}
+
+.loader-container {
+  @include flex(column, nowrap, center, center);
+  min-height: 100%;
+  .loader {
+    border: 20px solid darken($yellow, 5);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: 1s loader linear infinite;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+  }
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+.pagination {
+  @include flex(row, nowrap, center, center);
+  margin-bottom: 50px;
+  .pagination-info {
+    margin: 10px;
+  }
+  .next-button,
+  .prev-button {
+    background-color: transparent;
+    color: $charcoal;
+    border: 1px solid $gray;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: 200ms ease all;
+    &:disabled {
+      cursor: not-allowed;
+      background-color: $gray;
+    }
+    &:disabled:hover {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  .prev-button {
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    &:hover {
+      padding-right: 30px;
+    }
+  }
+  .next-button {
+    border-radius: 0 12px 12px 0;
+    &:hover {
+      padding-left: 30px;
     }
   }
 }

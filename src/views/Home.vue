@@ -29,11 +29,6 @@ import Starshps from './Starships';
 import logo from '@/assets/img/logo.png';
 
 export default {
-  mounted() {
-    this.$store.dispatch('getCharacters');
-    this.$store.dispatch('getPlanets');
-    this.$store.dispatch('getStarships');
-  },
   computed: {
     activeMenu() {
       return this.$store.getters.activeMenu;

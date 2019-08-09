@@ -7,7 +7,7 @@ const actions = {
       const payload = await fetchData('people', page);
       commit('setCharacters', payload);
     } catch (error) {
-      window.alert(error.message);
+      console.log(error.message);
     } finally {
       commit('setFetchingCharacters', false);
     }
@@ -18,7 +18,7 @@ const actions = {
       const payload = await fetchData('planets', page);
       commit('setPlanets', payload);
     } catch (error) {
-      window.alert(error.message);
+      console.log(error.message);
     } finally {
       commit('setFetchingStarships', false);
     }
@@ -29,7 +29,7 @@ const actions = {
       const payload = await fetchData('starships', page);
       commit('setStarships', payload);
     } catch (error) {
-      window.alert(error.message);
+      console.log(error.message);
     } finally {
       commit('setFetchingPlanets', false);
     }
