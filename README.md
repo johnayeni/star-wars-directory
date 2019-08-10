@@ -1,6 +1,7 @@
 # Star wars directory
 
-A simple Vue js app which uses [SWAPI](https://swapi.co/) to provide a search directory for Star wars characters, ships and planets
+A simple Vue js app which uses [SWAPI](https://swapi.co/) to provide a search directory for Star wars characters, ships and planets.
+See the application live [here](https://star-wars-directory.netlify.com)
 
 ## Project setup
 
