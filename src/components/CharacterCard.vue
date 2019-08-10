@@ -2,8 +2,9 @@
   <div class="character-card">
     <img :src="getImage()">
     <h4>{{ character.name }}</h4>
-    <p>{{ `DOB: ${character.birth_year}` }}</p>
+    <p>{{ `Birth year: ${character.birth_year}` }}</p>
     <p>{{ `Gender: ${character.gender}`  }}</p>
+    <router-link :to="`/profile/characters/${character.id}`"><h3>READ MORE<span>&#62;</span></h3></router-link>
   </div>
 </template>
 <script>

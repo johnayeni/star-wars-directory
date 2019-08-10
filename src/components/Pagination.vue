@@ -2,10 +2,10 @@
   <div class="pagination">
     <p class="pagination-info">{{ pageInfo }}</p>
     <button class="prev-button" :disabled="!prev" v-on:click="goToPreviousPage()">
-      &#60;
+      <span>&#60;</span>
     </button>
     <button class="next-button" :disabled="!next" v-on:click="goToNextPage()">
-      &#62;
+      <span>&#62;</span>
     </button>
   </div>
 </template>

@@ -3,14 +3,20 @@
   min-height: 30vh;
   padding: 10px;
   color: $yellow;
-  background-color: $black;
   text-align: center;
+  padding-bottom: 100px;
   .logo {
     display: block;
+    margin-bottom: 50px;
   }
   .content {
     @include flex(column, nowrap, center, center);
     height: 100%;
+  }
+  @include mobile {
+    .logo {
+      margin: auto;
+    }
   }
 }
 
@@ -27,8 +33,7 @@
 .section-menu {
   @include flex(row, nowrap, space-around, center);
   padding: 30px 0;
-  background-color: $black;
-  background-image: url('../img/hero-banner.gif');
+  background-color: transparent;
   &-item {
     @include flex(column, nowrap, center, center);
     cursor: pointer;
@@ -44,53 +49,21 @@
     &.active {
       color: $yellow;
       img {
-        transform: scale(1.2);
+        transform: scale(1.5);
         filter: brightness(100%);
       }
+    }
+  }
+  @include mobile {
+    &-item {
       h3 {
-        font-size: 1.5rem;
+        display: none;
       }
     }
   }
 }
 
-.character-card {
-  background-color: $gray;
-  color: $charcoal;
-  width: 300px;
-  height: 350px;
-  border-left: 5px solid $charcoal;
-  border-bottom: 5px solid $charcoal;
-  border-radius: 10px;
-  margin: 20px;
-  @include flex(column, wrap, center, center);
-  transition: 200ms ease all;
-  text-align: center;
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  img {
-    width: 200px;
-    margin-bottom: 20px;
-    border-radius: 50%;
-    filter: grayscale(70%);
-    transition: 200ms ease all;
-  }
-  &:hover {
-    background-color: $yellow;
-    color: $black;
-    border-left: 10px solid $black;
-    border-bottom: 10px solid $black;
-    img {
-      filter: grayscale(0%);
-      transform: scale(1.1);
-    }
-  }
-}
-
-.starship-card,
-.planet-card {
+%card {
   @include flex(column, nowrap, center, center);
   box-shadow: 0px 16px 16px 0 rgba(49, 64, 70, 0.1);
   width: 250px;
@@ -114,6 +87,15 @@
     filter: grayscale(50%);
     transition: 200ms ease all;
   }
+  a {
+    margin: 20px 0;
+    color: $white;
+    display: none;
+    text-decoration: none;
+    span {
+      margin: 0 5px;
+    }
+  }
   p {
     font-size: 0.8rem;
   }
@@ -125,12 +107,84 @@
       filter: grayscale(0%);
       transform: scale3d(1.2, 1.2, 1.2);
     }
+    a {
+      display: initial;
+      color: $black;
+    }
+  }
+  @include mobile {
+    a {
+      display: initial;
+    }
+  }
+}
+
+.character-card {
+  @extend %card;
+  background-color: $charcoal;
+  background-image: none;
+  img {
+    width: 200px;
+    border-radius: 50%;
+    filter: grayscale(70%);
+  }
+  &:hover {
+    img {
+      filter: grayscale(0%);
+      transform: scale(1.1);
+    }
+  }
+}
+
+.starship-card,
+.planet-card {
+  @extend %card;
+}
+
+.profile-page {
+  @include flex(column, nowrap, center);
+  color: $yellow;
+  min-height: calc(100vh - 40px);
+  .header {
+    @include flex(column, nowrap);
+    background-image: url('../img/hero-banner.gif');
+    padding: 20px;
+    padding-bottom: 50px;
+    img {
+      width: 280px;
+      border-radius: 50%;
+      margin: auto;
+    }
+    .back {
+      color: $yellow;
+      text-decoration: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    h1 {
+      text-align: center;
+    }
+  }
+  .body {
+    @include flex(row, wrap, center);
+    max-width: 800px;
+    margin: auto;
+    .feature {
+      text-align: center;
+      flex-grow: 1;
+      flex-basis: 180px;
+      margin: 10px;
+      h4 {
+        color: $white;
+      }
+    }
   }
 }
 
 .loader-container {
   @include flex(column, nowrap, center, center);
   min-height: 100%;
+  color: $yellow;
   .loader {
     border: 20px solid darken($yellow, 5);
     border-bottom-color: transparent;
@@ -154,39 +208,39 @@
 .pagination {
   @include flex(row, nowrap, center, center);
   margin-bottom: 50px;
+  color: $yellow;
   .pagination-info {
     margin: 10px;
   }
   .next-button,
   .prev-button {
-    background-color: transparent;
-    color: $charcoal;
-    border: 1px solid $gray;
+    background-color: $yellow;
+    color: $black;
+    border: none;
     padding: 10px 20px;
     cursor: pointer;
     font-weight: 700;
     font-size: 1.5rem;
-    transition: 200ms ease all;
+    transition: all 200ms cubic-bezier(0, 0, 0.21, 1.65);
     &:disabled {
       cursor: not-allowed;
       background-color: $gray;
+      color: $charcoal;
     }
     &:disabled:hover {
-      padding-left: 20px;
-      padding-right: 20px;
+      background-color: $gray;
+      color: $charcoal;
+    }
+    &:hover {
+      background-color: $black;
+      color: $yellow;
     }
   }
   .prev-button {
     border-right: none;
     border-radius: 12px 0 0 12px;
-    &:hover {
-      padding-right: 30px;
-    }
   }
   .next-button {
     border-radius: 0 12px 12px 0;
-    &:hover {
-      padding-left: 30px;
-    }
   }
 }

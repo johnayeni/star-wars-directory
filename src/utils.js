@@ -4,12 +4,15 @@ export const extractPageNumberFromUrl = (url) => {
   return isNaN(page) ? null : page;
 };
 
+export const generateId = str => btoa(str).replace(/[^a-zA-Z ]/g, '');
+
 export const handlePayload = (payload) => {
   const {
-    next: nextPageUrl, previous: previousPageUrl, results: list, count,
+    next: nextPageUrl, previous: previousPageUrl, results, count,
   } = payload;
   const next = extractPageNumberFromUrl(nextPageUrl);
   const previous = extractPageNumberFromUrl(previousPageUrl);
+  const list = results.map(item => ({ ...item, id: generateId(item.name) }));
   return {
     next,
     previous,
@@ -19,6 +22,11 @@ export const handlePayload = (payload) => {
 };
 
 export const buildUrl = (base, path, page = 1) => `${base}/${path}?page=${page}`;
+
+export const isUrl = (str) => {
+  const pattern = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+  return !!pattern.test(str);
+};
 
 export const getRandomIndexFromArray = (arr) => {
   const len = arr.length;

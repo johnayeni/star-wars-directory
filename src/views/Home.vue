@@ -4,11 +4,9 @@
       <div slot="content">
         <div class="flex-h-center">
           <img :src="logo" alt="star wars logo" width="150">
-          <h2>Directory</h2>
+          <h3>Directory</h3>
         </div>
-        <div class="flex-h-center">
-          <h4>Catalog of your favourite Characters, Starshps and Planets.</h4>
-        </div>
+        <p>Find you favourite Characters, planets and starships of the Starwars universe.</p>
         <SearchBar></SearchBar>
       </div>
     </HeroBanner>
@@ -23,9 +21,9 @@
 import HeroBanner from '@/components/HeroBanner';
 import SearchBar from '@/components/SearchBar';
 import SectionMenu from '@/components/SectionMenu';
-import Planets from './Planets';
-import Characters from './Characters';
-import Starshps from './Starships';
+import Planets from '@/components/Planets';
+import Characters from '@/components/Characters';
+import Starshps from '@/components/Starships';
 import logo from '@/assets/img/logo.png';
 
 export default {

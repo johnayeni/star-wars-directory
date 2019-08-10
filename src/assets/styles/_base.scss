@@ -6,6 +6,8 @@ $gray: #eaeaea;
 $lightgray: #b3b3b3;
 $red: #d8000c;
 $red-alt: #ffbaba;
+$mobile-width: 768px;
+$desktop-width: 1440px;
 
 @font-face {
   font-family: 'DIN';
@@ -30,13 +32,30 @@ $red-alt: #ffbaba;
   align-items: $align-items;
 }
 
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'DIN', sans-serif;
   color: $black;
   font-weight: 300;
-  // cursor: url('') auto;
+  background: linear-gradient(135deg, black 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, black 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, black 25%, transparent 25%),
+    linear-gradient(45deg, black 25%, transparent 25%);
+  background-size: 0.3em 0.3em;
+  background-color: #232323;
 }
 
 h1,
@@ -58,16 +77,4 @@ input {
 
 .flex-h-center {
   @include flex(row, nowrap, center, center);
-}
-
-.text-center {
-  text-align: center;
-}
-
-.w-100 {
-  min-width: 100%;
-}
-
-.d-block {
-  display: block;
 }

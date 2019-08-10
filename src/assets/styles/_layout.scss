@@ -5,8 +5,24 @@
 }
 .cards-container {
   @include flex(row, wrap, center, stretch);
-  background-color: $white;
+  background-color: transparent;
   min-height: 100%;
   padding: 20px;
-  padding-top: 50px;
+}
+
+.not-found {
+  @include flex(column, nowrap, center, center);
+  height: 100vh;
+  background-image: url('../img/hero-banner.gif');
+  color: $yellow;
+  h1 {
+    font-size: 3rem;
+  }
+  h4 {
+    color: $white;
+  }
+  a {
+    color: $yellow;
+    font-size: 1rem;
+  }
 }
