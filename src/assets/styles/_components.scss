@@ -89,7 +89,7 @@
   }
   a {
     margin: 20px 0;
-    color: $white;
+    color: $black;
     display: none;
     text-decoration: none;
     span {
@@ -107,12 +107,6 @@
       filter: grayscale(0%);
       transform: scale3d(1.2, 1.2, 1.2);
     }
-    a {
-      display: initial;
-      color: $black;
-    }
-  }
-  @include mobile {
     a {
       display: initial;
     }
