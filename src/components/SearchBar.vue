@@ -1,6 +1,11 @@
 <template>
   <form class="flex-h-center">
-    <input class="search-bar" v-model="searchValue" :placeholder="`Search for ${activeMenu}...`" aria-label="Search bar">
+    <input
+      class="search-bar"
+      v-model="searchValue"
+      :placeholder="`Search for ${activeMenu}...`"
+      aria-label="Search bar"
+    >
     <button type="submit" class="search-button" @click="search">
       Go
     </button>
