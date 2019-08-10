@@ -47,5 +47,8 @@ export const generatePageInfoText = (prevPage, nextPage, count) => {
   if (prevPage) {
     return `${prevPage * 10 + 1}-${count} to ${count}`;
   }
+  if (count) {
+    return `${count} - ${count} of ${count}`;
+  }
   return '';
 };
