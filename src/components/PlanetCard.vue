@@ -4,7 +4,12 @@
     <h3>{{ planet.name }}</h3>
     <p>{{ `Population: ${planet.population}` }}</p>
     <p>{{ `Climate: ${planet.climate}` }}</p>
-    <router-link :to="`/profile/planets/${planet.id}`"><h3>READ MORE<span>&#62;</span></h3></router-link>
+    <router-link :to="`/profile/planets/${planet.id}`">
+      <h3>
+        FULL DETAILS
+        <span>&#62;</span>
+      </h3>
+    </router-link>
   </div>
 </template>
 

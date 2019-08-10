@@ -24,7 +24,8 @@
   width: 100%;
   padding: 15px 20px;
   box-sizing: border-box;
-  background-color: $white;
+  background-color: $charcoal;
+  color: $white;
   border: none;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -89,7 +90,7 @@
   }
   a {
     margin: 20px 0;
-    color: $black;
+    color: $white;
     display: none;
     text-decoration: none;
     span {
@@ -107,6 +108,12 @@
       filter: grayscale(0%);
       transform: scale3d(1.2, 1.2, 1.2);
     }
+    a {
+      display: initial;
+      color: $black;
+    }
+  }
+  @include mobile {
     a {
       display: initial;
     }

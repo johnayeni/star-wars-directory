@@ -4,7 +4,12 @@
     <h3>{{ starship.name }}</h3>
     <p>{{ `Model: ${starship.model}` }}</p>
     <p>{{ `Cargo Capacity: ${starship.cargo_capacity}` }}</p>
-    <router-link :to="`/profile/starships/${starship.id}`"><h3>READ MORE<span>&#62;</span></h3></router-link>
+    <router-link :to="`/profile/starships/${starship.id}`">
+      <h3>
+        FULL DETAILS
+        <span>&#62;</span>
+      </h3>
+    </router-link>
   </div>
 </template>
 

@@ -4,7 +4,12 @@
     <h4>{{ character.name }}</h4>
     <p>{{ `Birth year: ${character.birth_year}` }}</p>
     <p>{{ `Gender: ${character.gender}`  }}</p>
-    <router-link :to="`/profile/characters/${character.id}`"><h3>READ MORE<span>&#62;</span></h3></router-link>
+    <router-link :to="`/profile/characters/${character.id}`">
+      <h3>
+        FULL DETAILS
+        <span>&#62;</span>
+      </h3>
+    </router-link>
   </div>
 </template>
 <script>

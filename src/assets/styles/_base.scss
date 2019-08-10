@@ -4,8 +4,7 @@ $yellow: #ffe545;
 $white: #ffffff;
 $gray: #eaeaea;
 $lightgray: #b3b3b3;
-$red: #d8000c;
-$red-alt: #ffbaba;
+$darkgray: #232323;
 $mobile-width: 768px;
 $desktop-width: 1440px;
 
@@ -50,12 +49,7 @@ body {
   font-family: 'DIN', sans-serif;
   color: $black;
   font-weight: 300;
-  background: linear-gradient(135deg, black 25%, transparent 25%) -50px 0,
-    linear-gradient(225deg, black 25%, transparent 25%) -50px 0,
-    linear-gradient(315deg, black 25%, transparent 25%),
-    linear-gradient(45deg, black 25%, transparent 25%);
-  background-size: 0.3em 0.3em;
-  background-color: #232323;
+  background-color: $darkgray;
 }
 
 h1,

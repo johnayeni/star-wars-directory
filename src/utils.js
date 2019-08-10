@@ -28,6 +28,15 @@ export const isUrl = (str) => {
   return !!pattern.test(str);
 };
 
+export const validateObjectKeyAndValue = ([key, value]) => (
+  key !== 'created'
+    && key !== 'edited'
+    && key !== 'name'
+    && key !== 'id'
+    && typeof value === 'string'
+    && !isUrl(value)
+);
+
 export const getRandomIndexFromArray = (arr) => {
   const len = arr.length;
   return Math.floor(Math.random() * len);
