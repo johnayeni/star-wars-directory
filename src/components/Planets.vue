@@ -16,7 +16,7 @@ import Pagination from '@/components/Pagination';
 
 export default {
   name: 'Planets',
-  beforeMount() {
+  created() {
     if (this.planets.length < 1) {
       this.$store.dispatch('getPlanets');
     }
@@ -45,10 +45,10 @@ export default {
   },
   methods: {
     goToNextPage() {
-      this.$store.dispatch('getPlanets', this.nextPage);
+      this.$store.dispatch('getPlanets', { page: this.nextPage });
     },
     goToPreviousPage() {
-      this.$store.dispatch('getPlanets', this.previousPage);
+      this.$store.dispatch('getPlanets', { page: this.previousPage });
     },
   },
 

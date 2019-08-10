@@ -9,8 +9,8 @@
     </div>
     <div class="body">
       <div v-for="(feature, index) in features" :key="index" class="feature">
-        <h4>{{ feature.name | formatString }}</h4>
-        <h3>{{ feature.value }}</h3>
+        <h6>{{ feature.name | formatString }}</h6>
+        <h4>{{ feature.value }}</h4>
       </div>
     </div>
   </div>

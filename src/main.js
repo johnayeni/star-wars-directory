@@ -8,7 +8,9 @@ import store from './store';
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
-Vue.use(VueToast);
+Vue.use(VueToast, {
+  position: 'top',
+});
 
 new Vue({
   router,

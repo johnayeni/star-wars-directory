@@ -28,7 +28,7 @@ import Pagination from '@/components/Pagination';
 
 export default {
   name: 'Characters',
-  beforeMount() {
+  created() {
     if (this.characters.length < 1) {
       this.$store.dispatch('getCharacters');
     }
@@ -62,10 +62,10 @@ export default {
   },
   methods: {
     goToNextPage() {
-      this.$store.dispatch('getCharacters', this.nextPage);
+      this.$store.dispatch('getCharacters', { page: this.nextPage });
     },
     goToPreviousPage() {
-      this.$store.dispatch('getCharacters', this.previousPage);
+      this.$store.dispatch('getCharacters', { page: this.previousPage });
     },
   },
 };

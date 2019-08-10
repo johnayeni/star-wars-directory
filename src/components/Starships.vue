@@ -17,7 +17,7 @@ import Pagination from '@/components/Pagination';
 
 export default {
   name: 'Starships',
-  beforeMount() {
+  created() {
     if (this.starships.length < 1) {
       this.$store.dispatch('getStarships');
     }
@@ -46,10 +46,10 @@ export default {
   },
   methods: {
     goToNextPage() {
-      this.$store.dispatch('getStarships', this.nextPage);
+      this.$store.dispatch('getStarships', { page: this.nextPage });
     },
     goToPreviousPage() {
-      this.$store.dispatch('getStarships', this.previousPage);
+      this.$store.dispatch('getStarships', { page: this.previousPage });
     },
   },
 };
