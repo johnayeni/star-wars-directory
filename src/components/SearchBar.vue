@@ -1,6 +1,6 @@
 <template>
   <form class="flex-h-center">
-    <input class="search-bar" v-model="searchValue" placeholder="Search for a character, ship or planet ..." aria-label="Search bar">
+    <input class="search-bar" v-model="searchValue" :placeholder="`Search for ${activeMenu}...`" aria-label="Search bar">
     <button type="submit" class="search-button" @click="search">
       Go
     </button>
@@ -34,14 +34,15 @@ export default {
           this.$store.dispatch('getStarships', { search: this.searchValue });
           break;
         default:
-          this.$toast.info('Error operation');
+          this.$toast.info('Invalid operation');
       }
     },
   },
   watch: {
     activeMenu(oldValue, newValue) {
       if (oldValue !== newValue && this.searchValue) {
-        this.search();
+        // this.search();
+        this.searchValue = '';
       }
     },
   },

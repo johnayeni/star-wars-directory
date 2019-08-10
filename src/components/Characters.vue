@@ -11,12 +11,26 @@
           <option value="robot">Robot</option>
         </select>
       </div>
-      <div class="cards-container">
-        <div v-for="(character, index) in characters" :key="index">
-          <CharacterCard v-if="filter === 'all' || character.gender === filter" :character="character"></CharacterCard>
+      <div v-if="characters.length > 0">
+        <div class="cards-container">
+          <div v-for="(character, index) in characters" :key="index">
+            <CharacterCard
+              v-if="filter === 'all' || character.gender === filter"
+              :character="character"
+            >
+            </CharacterCard>
+          </div>
         </div>
+        <Pagination
+          :count="charactersCount"
+          :prev="previousPage"
+          :next="nextPage"
+          :goToPreviousPage="goToPreviousPage"
+          :goToNextPage="goToNextPage"
+        >
+        </Pagination>
       </div>
-      <Pagination :count="charactersCount" :prev="previousPage" :next="nextPage" :goToPreviousPage="goToPreviousPage" :goToNextPage="goToNextPage"></Pagination>
+      <EmptyPlaceHolder v-else :refresh="refresh"></EmptyPlaceHolder>
     </div>
   </div>
 </template>
@@ -25,12 +39,13 @@
 import CharacterCard from '@/components/CharacterCard';
 import Loader from '@/components/Loader';
 import Pagination from '@/components/Pagination';
+import EmptyPlaceHolder from '@/components/EmptyPlaceHolder';
 
 export default {
   name: 'Characters',
   created() {
     if (this.characters.length < 1) {
-      this.$store.dispatch('getCharacters');
+      this.$store.dispatch('getCharacters', { page: 1 });
     }
   },
   data() {
@@ -59,6 +74,7 @@ export default {
     CharacterCard,
     Loader,
     Pagination,
+    EmptyPlaceHolder,
   },
   methods: {
     goToNextPage() {
@@ -66,6 +82,9 @@ export default {
     },
     goToPreviousPage() {
       this.$store.dispatch('getCharacters', { page: this.previousPage });
+    },
+    refresh() {
+      this.$store.dispatch('getCharacters', { page: 1 });
     },
   },
 };

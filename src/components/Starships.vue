@@ -2,10 +2,25 @@
   <div>
     <Loader v-if="loading"></Loader>
     <div v-else>
-      <div class="cards-container">
-        <StarshipCard v-for="(starship, index) in starships" :key="index" :starship="starship"></StarshipCard>
+      <div v-if="starships.length > 0">
+        <div class="cards-container">
+          <StarshipCard
+            v-for="(starship, index) in starships"
+            :key="index"
+            :starship="starship"
+          >
+          </StarshipCard>
+        </div>
+        <Pagination
+          :count="starshipsCount"
+          :prev="previousPage"
+          :next="nextPage"
+          :goToPreviousPage="goToPreviousPage"
+          :goToNextPage="goToNextPage"
+        >
+        </Pagination>
       </div>
-      <Pagination :count="starshipsCount" :prev="previousPage" :next="nextPage" :goToPreviousPage="goToPreviousPage" :goToNextPage="goToNextPage"></Pagination>
+      <EmptyPlaceHolder v-else :refresh="refresh"></EmptyPlaceHolder>
     </div>
   </div>
 </template>
@@ -14,12 +29,13 @@
 import StarshipCard from '@/components/StarshipCard';
 import Loader from '@/components/Loader';
 import Pagination from '@/components/Pagination';
+import EmptyPlaceHolder from '@/components/EmptyPlaceHolder';
 
 export default {
   name: 'Starships',
   created() {
     if (this.starships.length < 1) {
-      this.$store.dispatch('getStarships');
+      this.$store.dispatch('getStarships', { page: 1 });
     }
   },
   computed: {
@@ -43,6 +59,7 @@ export default {
     StarshipCard,
     Loader,
     Pagination,
+    EmptyPlaceHolder,
   },
   methods: {
     goToNextPage() {
@@ -50,6 +67,9 @@ export default {
     },
     goToPreviousPage() {
       this.$store.dispatch('getStarships', { page: this.previousPage });
+    },
+    refresh() {
+      this.$store.dispatch('getStarships', { page: 1 });
     },
   },
 };

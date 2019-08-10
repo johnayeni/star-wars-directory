@@ -169,7 +169,11 @@
 .character-card {
   @extend %card;
   background-color: $charcoal;
-  background-image: none;
+  background: linear-gradient(135deg, black 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, black 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, black 25%, transparent 25%),
+    linear-gradient(45deg, black 25%, transparent 25%);
+  background-size: 0.2em 0.2em;
   img {
     width: 200px;
     border-radius: 50%;
@@ -297,4 +301,17 @@
   .next-button {
     border-radius: 0 12px 12px 0;
   }
+}
+
+.refresh-button {
+  background-color: $yellow;
+  border-radius: 100px;
+  color: $black;
+  border: none;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 2.8rem;
+  transition: all 200ms ease;
 }

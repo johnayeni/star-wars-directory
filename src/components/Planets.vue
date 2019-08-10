@@ -1,10 +1,20 @@
 <template>
   <Loader v-if="loading"></Loader>
   <div v-else>
-    <div class="cards-container">
-      <PlanetCard v-for="(planet, index) in planets" :key="index" :planet="planet"></PlanetCard>
+    <div v-if="planets.length > 0">
+      <div class="cards-container">
+        <PlanetCard v-for="(planet, index) in planets" :key="index" :planet="planet"></PlanetCard>
+      </div>
+      <Pagination
+        :count="planetsCount"
+        :prev="previousPage"
+        :next="nextPage"
+        :goToPreviousPage="goToPreviousPage"
+        :goToNextPage="goToNextPage"
+      >
+      </Pagination>
     </div>
-    <Pagination :count="planetsCount" :prev="previousPage" :next="nextPage" :goToPreviousPage="goToPreviousPage" :goToNextPage="goToNextPage"></Pagination>
+    <EmptyPlaceHolder v-else :refresh="refresh"></EmptyPlaceHolder>
   </div>
 </template>
 
@@ -12,13 +22,14 @@
 import PlanetCard from '@/components/PlanetCard';
 import Loader from '@/components/Loader';
 import Pagination from '@/components/Pagination';
+import EmptyPlaceHolder from '@/components/EmptyPlaceHolder';
 
 
 export default {
   name: 'Planets',
   created() {
     if (this.planets.length < 1) {
-      this.$store.dispatch('getPlanets');
+      this.$store.dispatch('getPlanets', { page: 1 });
     }
   },
   computed: {
@@ -42,6 +53,7 @@ export default {
     PlanetCard,
     Loader,
     Pagination,
+    EmptyPlaceHolder,
   },
   methods: {
     goToNextPage() {
@@ -49,6 +61,9 @@ export default {
     },
     goToPreviousPage() {
       this.$store.dispatch('getPlanets', { page: this.previousPage });
+    },
+    refresh() {
+      this.$store.dispatch('getPlanets', { page: 1 });
     },
   },
 
