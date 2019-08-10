@@ -9,8 +9,8 @@ $mobile-width: 768px;
 $desktop-width: 1440px;
 
 @font-face {
-  font-family: 'DIN';
-  src: url('../fonts/DIN.ttf');
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat.ttf');
 }
 
 @font-face {
@@ -46,7 +46,7 @@ $desktop-width: 1440px;
 body {
   margin: 0;
   padding: 0;
-  font-family: 'DIN', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: $black;
   font-weight: 300;
   background-color: $darkgray;
@@ -66,7 +66,7 @@ h6 {
 }
 
 input {
-  font-family: 'DIN', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .flex-h-center {

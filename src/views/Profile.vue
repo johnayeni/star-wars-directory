@@ -2,7 +2,7 @@
   <div class="profile-page">
     <div class="header">
       <router-link class="back" to="/">
-        <span>&#60;</span>
+        <span>&#60;</span>Back
       </router-link>
       <img :src="getImage()">
       <h1>{{ name }}</h1>

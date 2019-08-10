@@ -53,6 +53,17 @@
         transform: scale(1.5);
         filter: brightness(100%);
       }
+      &:hover {
+        img {
+          transform: translateY(0);
+          transform: scale(1.5);
+        }
+      }
+    }
+    &:hover {
+      img {
+        transform: translateY(-10px);
+      }
     }
   }
   @include mobile {
@@ -97,7 +108,7 @@
   margin: 10px;
   transition: 200ms ease all;
   * {
-    margin: 0;
+    margin: 5px;
     padding: 0;
   }
   img {
@@ -111,6 +122,7 @@
     color: $white;
     display: none;
     text-decoration: none;
+    transition: 200ms ease-in-out all;
     span {
       margin: 0 5px;
     }
@@ -177,8 +189,12 @@
     .back {
       color: $yellow;
       text-decoration: none;
-      font-size: 1.5rem;
+      font-size: 1rem;
+      font-weight: 900;
       cursor: pointer;
+      span {
+        margin-right: 10px;
+      }
     }
     h1 {
       text-align: center;
