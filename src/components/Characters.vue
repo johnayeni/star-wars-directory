@@ -2,8 +2,19 @@
   <div>
     <Loader v-if="loading"></Loader>
     <div v-else>
+      <div class="filter">
+        <label>Gender</label>
+        <select v-model="filter">
+          <option value="all">All</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="robot">Robot</option>
+        </select>
+      </div>
       <div class="cards-container">
-        <CharacterCard v-for="(character, index) in characters" :key="index" :character="character"></CharacterCard>
+        <div v-for="(character, index) in characters" :key="index">
+          <CharacterCard v-if="filter === 'all' || character.gender === filter" :character="character"></CharacterCard>
+        </div>
       </div>
       <Pagination :count="charactersCount" :prev="previousPage" :next="nextPage" :goToPreviousPage="goToPreviousPage" :goToNextPage="goToNextPage"></Pagination>
     </div>
@@ -21,6 +32,11 @@ export default {
     if (this.characters.length < 1) {
       this.$store.dispatch('getCharacters');
     }
+  },
+  data() {
+    return {
+      filter: 'all',
+    };
   },
   computed: {
     characters() {

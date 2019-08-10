@@ -64,6 +64,24 @@
   }
 }
 
+.filter {
+  margin-left: 100px;
+  color: $white;
+  select {
+    margin-left: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 15px;
+    color: $yellow;
+    font-size: 1rem;
+    border: 2px solid $yellow;
+    background-color: transparent;
+    option {
+      background-color: transparent;
+    }
+  }
+}
+
 %card {
   @include flex(column, nowrap, center, center);
   box-shadow: 0px 16px 16px 0 rgba(49, 64, 70, 0.1);
