@@ -3,12 +3,15 @@
     <Loader v-if="loading"></Loader>
     <div v-else>
       <div class="filter">
-        <label>Gender</label>
+        <label>Filter</label>
         <select v-model="filter">
-          <option value="all">All</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="robot">Robot</option>
+          <option
+            v-for="(option, index) in filterOptions"
+            :key="index"
+            :value="option.toLowerCase()"
+          >
+              {{ option }}
+          </option>
         </select>
       </div>
       <div v-if="characters.length > 0">
@@ -51,6 +54,13 @@ export default {
   data() {
     return {
       filter: 'all',
+      filterOptions: [
+        'All',
+        'Male',
+        'Female',
+        'Hermaphrodite',
+        'Robot',
+      ],
     };
   },
   computed: {

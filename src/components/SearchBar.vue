@@ -1,5 +1,5 @@
 <template>
-  <form class="flex-h-center">
+  <form class="search-form flex-h-center">
     <input
       class="search-bar"
       v-model="searchValue"
@@ -46,7 +46,6 @@ export default {
   watch: {
     activeMenu(oldValue, newValue) {
       if (oldValue !== newValue && this.searchValue) {
-        // this.search();
         this.searchValue = '';
       }
     },
