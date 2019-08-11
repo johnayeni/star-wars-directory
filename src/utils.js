@@ -4,15 +4,13 @@ export const extractPageNumberFromUrl = (url) => {
   return isNaN(page) ? null : page;
 };
 
-export const generateId = str => btoa(str).replace(/[^a-zA-Z ]/g, '');
-
 export const handlePayload = (payload) => {
   const {
     next: nextPageUrl, previous: previousPageUrl, results, count,
   } = payload;
   const next = extractPageNumberFromUrl(nextPageUrl);
   const previous = extractPageNumberFromUrl(previousPageUrl);
-  const list = results.map(item => ({ ...item, id: generateId(item.name) }));
+  const list = results.map(item => ({ ...item, id: String(extractPageNumberFromUrl(item.url)) }));
   return {
     next,
     previous,
