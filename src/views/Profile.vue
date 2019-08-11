@@ -96,13 +96,14 @@ export default {
         if (!item) {
           item = await this.getDataFromNetwork();
         }
-        if (item) {
-          const { name, ...rest } = item;
-          const features = Object.entries(rest)
-            .filter(validateObjectKeyAndValue)
-            .map(feature => ({ name: feature[0], value: feature[1] }));
-          this.item = { name, image: this.getImage(), features };
+        if (!item || (item.detail && item.detail === 'Not found')) {
+          this.$router.push('/404');
         }
+        const { name, ...rest } = item;
+        const features = Object.entries(rest)
+          .filter(validateObjectKeyAndValue)
+          .map(feature => ({ name: feature[0], value: feature[1] }));
+        this.item = { name, image: this.getImage(), features };
       } catch (error) {
         this.$toast.error(error.message);
       } finally {
