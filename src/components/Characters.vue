@@ -3,8 +3,8 @@
     <Loader v-if="loading"></Loader>
     <div v-else>
       <div class="filter">
-        <label aria-label="search">Filter</label>
-        <select v-model="filter" aria-labelledby="search">
+        <label aria-label="filter">Filter</label>
+        <select v-model="filter" aria-labelledby="filter">
           <option
             v-for="(option, index) in filterOptions"
             :key="index"
