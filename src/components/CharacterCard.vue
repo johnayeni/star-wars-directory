@@ -1,6 +1,6 @@
 <template>
   <div class="character-card">
-    <img :src="getImage()">
+    <img :src="getImage()" :alt="character.name">
     <h4>{{ character.name }}</h4>
     <p>{{ `Birth year: ${character.birth_year}` }}</p>
     <p>{{ `Gender: ${character.gender}`  }}</p>

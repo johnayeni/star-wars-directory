@@ -1,6 +1,6 @@
 <template>
   <div class="planet-card">
-    <img :src="getImage()" />
+    <img :src="getImage()" :alt="planet.name" />
     <h3>{{ planet.name }}</h3>
     <p>{{ `Population: ${planet.population}` }}</p>
     <p>{{ `Climate: ${planet.climate}` }}</p>

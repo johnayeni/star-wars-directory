@@ -1,6 +1,6 @@
 <template>
   <div class="starship-card">
-    <img :src="getImage()" />
+    <img :src="getImage()" :alt="starship.name" />
     <h3>{{ starship.name }}</h3>
     <p>{{ `Model: ${starship.model}` }}</p>
     <p>{{ `Cargo Capacity: ${starship.cargo_capacity}` }}</p>

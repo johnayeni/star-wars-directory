@@ -6,7 +6,7 @@
         <router-link class="back" to="/">
           <span>&#60;</span>Back
         </router-link>
-        <img :src="item.image">
+        <img :src="item.image" :alt="item.name">
         <h1>{{ item.name }}</h1>
       </div>
       <div class="body">

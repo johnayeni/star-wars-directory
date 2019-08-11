@@ -1,7 +1,7 @@
 <template>
   <div class="section-menu">
     <div v-for="(menu, key) in menus" :key="key" :class="`section-menu-item ${menu.name === activeMenu ? 'active': ''}`" v-on:click="toggleMenu(menu.name)">
-      <img :src="menu.icon">
+      <img :src="menu.icon" :alt="`${menu.name} icon`">
       <h3>{{ menu.name }}</h3>
     </div>
   </div>
